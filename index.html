@@ -19,7 +19,7 @@
       padding-bottom: 5px;
     }
 
-    #login, #repo {
+    #login {
       max-width: 450px;
       margin: auto;
       padding: 25px;
@@ -55,29 +55,6 @@
       transform: scale(1.05);
     }
 
-    ul {
-      text-align: left;
-      list-style: none;
-      padding: 0;
-    }
-
-    ul li {
-      margin: 10px 0;
-      padding: 8px;
-      background: #2a2a2a;
-      border-left: 4px solid #ff4c4c;
-      border-radius: 4px;
-    }
-
-    ul li a {
-      color: #ffcccc;
-      text-decoration: none;
-    }
-
-    ul li a:hover {
-      text-decoration: underline;
-    }
-
     #erro {
       color: #ff4c4c;
       margin-top: 10px;
@@ -87,61 +64,44 @@
 <body>
   <div id="login">
     <h2>Acesso Restrito</h2>
-    <p>Digite a senha para acessar os documentos:</p>
+    <p>Digite a senha para continuar:</p>
     <input type="password" id="senha" placeholder="Senha">
     <br>
     <button onclick="verificarSenha()">Entrar</button>
     <p id="erro"></p>
   </div>
 
-  <div id="repo" style="display:none;">
-    <h2>📂 Repositório de Documentos</h2>
-    <ul>
-      <li><a href="docs/contrato1.pdf" target="_blank">Contrato 1</a></li>
-      <li><a href="docs/relatorio2.docx" target="_blank">Relatório 2</a></li>
-      <li><a href="docs/apresentacao3.pptx" target="_blank">Apresentação 3</a></li>
-    </ul>
-    <br>
-    <button onclick="sair()">Sair</button>
-  </div>
-
   <script>
+    // Função para calcular SHA-256
     async function sha256(message) {
-    const msgBuffer = new TextEncoder().encode(message);
-    const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
-    const hashArray = Array.from(new Uint8Array(hashBuffer));
-    return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
-  }
-
-    const HASH_SENHA = "1edd531bebe6252f44f6362e1d6b5b07d0bf589b384ea334baccb9705c967d81";
-
-  async function verificarSenha() {
-    const campo = document.getElementById("senha");
-    const senhaDigitada = (campo.value || "").trim(); // evita espaços acidentais
-    const hashDigitado = await sha256(senhaDigitada);
-
-    if (hashDigitado === HASH_SENHA) {
-      document.getElementById("login").style.display = "none";
-      document.getElementById("repo").style.display = "block";
-      document.getElementById("erro").innerText = "";
-    } else {
-      document.getElementById("erro").innerText = "Senha incorreta!";
+      const msgBuffer = new TextEncoder().encode(message);
+      const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+      const hashArray = Array.from(new Uint8Array(hashBuffer));
+      return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
     }
-  }
 
-  function sair() {
-    document.getElementById("repo").style.display = "none";
-    document.getElementById("login").style.display = "block";
-    document.getElementById("senha").value = "";
-    document.getElementById("erro").innerText = "";
-  }
-  document.addEventListener("DOMContentLoaded", () => {
-    const input = document.getElementById("senha");
-    input.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") verificarSenha();
+      const HASH_SENHA = "1edd531bebe6252f44f6362e1d6b5b07d0bf589b384ea334baccb9705c967d81";
+
+    async function verificarSenha() {
+      const campo = document.getElementById("senha");
+      const senhaDigitada = (campo.value || "").trim();
+      const hashDigitado = await sha256(senhaDigitada);
+
+      if (hashDigitado === HASH_SENHA) {
+        // Redireciona para main.html em vez de mostrar documentos
+        window.location.href = "main.html";
+      } else {
+        document.getElementById("erro").innerText = "Senha incorreta!";
+      }
+    }
+
+    // Permitir Enter no campo
+    document.addEventListener("DOMContentLoaded", () => {
+      const input = document.getElementById("senha");
+      input.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") verificarSenha();
+      });
     });
-  });
-</script>
+  </script>
 </body>
 </html>
-
