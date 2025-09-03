@@ -5,7 +5,7 @@ REM arquivos locais com o GitHub
 REM ===============================
 
 :: URL do repositório GitHub (edite uma vez e salve)
-set "REPO=https://github.com/ivanbsf/ivanbsf.git"
+set "REPO=https://github.com/ivanbsf/advocaciabotelho.github.io.git"
 
 :: Branch principal (padrão: main, pode ser master em alguns repos)
 set "BRANCH=main"
