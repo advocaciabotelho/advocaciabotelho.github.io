@@ -1,159 +1,244 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Advocacia Botelho</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: "Segoe UI", Roboto, sans-serif;
-      background: #0d0d0d url('https://www.transparenttextures.com/patterns/wood-pattern.png');
-      color: #f5f5f5;
-      line-height: 1.6;
-    }
-    header {
-      background: #111;
-      border-bottom: 4px solid #8b5a2b;
-      padding: 20px;
-      text-align: center;
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.2rem;
-      color: #d4af37;
-      letter-spacing: 2px;
-    }
-    nav {
-      margin-top: 10px;
-    }
-    nav a {
-      color: #f5f5f5;
-      margin: 0 12px;
-      text-decoration: none;
-      font-weight: 500;
-    }
-    nav a:hover {
-      color: #d4af37;
-    }
-    .hero {
-      background: rgba(0,0,0,0.75);
-      padding: 80px 20px;
-      text-align: center;
-    }
-    .hero h2 {
-      font-size: 2rem;
-      margin-bottom: 10px;
-      color: #d4af37;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      color: #ddd;
-    }
-    .section {
-      padding: 50px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-    .section h3 {
-      text-align: center;
-      color: #d4af37;
-      font-size: 1.8rem;
-      margin-bottom: 20px;
-      border-bottom: 2px solid #8b5a2b;
-      display: inline-block;
-      padding-bottom: 5px;
-    }
-    .areas {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      margin-top: 30px;
-    }
-    .area {
-      flex: 1 1 280px;
-      margin: 15px;
-      background: rgba(20,20,20,0.9);
-      border: 1px solid #8b5a2b;
-      border-radius: 12px;
-      padding: 20px;
-      text-align: center;
-      transition: transform 0.2s ease;
-    }
-    .area:hover {
-      transform: scale(1.05);
-    }
-    .area h4 {
-      color: #d4af37;
-      margin-bottom: 10px;
-    }
-    .contato {
-      text-align: center;
-    }
-    .contato p {
-      margin: 8px 0;
-    }
-    footer {
-      background: #111;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9rem;
-      color: #999;
-      border-top: 2px solid #8b5a2b;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ADVOCACIA BOTELHO</title>
+<style>
+:root {
+  --pastel: #f5deb3; /* tom pastel/bege */
+  --dark: #111;
+  --accent: #8b5a2b;
+}
+* { margin:0; padding:0; box-sizing:border-box; font-family:Segoe UI,Roboto,Arial,sans-serif }
+body { background:#fafafa; color:#222; }
+
+/* ===== HEADER ===== */
+header {
+  background:#000;
+  color:var(--pastel);
+  text-align:center;
+  padding:20px;
+  position:relative;
+}
+header h1 {
+  font-size:2.5rem;
+  letter-spacing:2px;
+}
+.whatsapp-btn {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25d366;
+  color:white;
+  padding:12px 20px;
+  border-radius:50px;
+  font-weight:bold;
+  text-decoration:none;
+  box-shadow:0 4px 10px rgba(0,0,0,0.3);
+  transition:0.3s;
+  z-index:1000;
+}
+.whatsapp-btn:hover { background:#20b455; }
+
+/* ===== MENU HOVERS ===== */
+.menu {
+  display:flex;
+  justify-content:center;
+  gap:30px;
+  margin:40px 0;
+}
+.menu-item {
+  width:300px; height:300px;
+  background:#000;
+  color:var(--pastel);
+  display:flex; justify-content:center; align-items:center;
+  font-size:1.2rem; font-weight:bold;
+  border-radius:12px;
+  cursor:pointer;
+  transition:transform 0.3s, background 0.3s;
+}
+.menu-item:hover { transform:scale(1.05); background:#222; }
+
+/* ===== SECTIONS ===== */
+section { padding:60px 20px; text-align:center; }
+section h2 { color:#000; margin-bottom:20px; font-size:1.8rem; }
+section p { max-width:800px; margin:auto; font-size:1rem; line-height:1.6; }
+
+/* ===== QUEM SOMOS ===== */
+.advogados {
+  display:flex;
+  justify-content:center;
+  gap:40px;
+  flex-wrap:wrap;
+  margin-top:30px;
+}
+.advogado {
+  text-align:center;
+}
+.advogado img {
+  width:300px; height:400px; object-fit:cover;
+  border-radius:12px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+.advogado h3 { margin-top:10px; color:#000; }
+
+/* ===== SLIDESHOW ===== */
+.slideshow-container { position:relative; max-width:100%; height:450px; overflow:hidden; }
+.mySlides { display:none; width:100%; height:100%; }
+.mySlides img { width:100%; height:100%; object-fit:cover; }
+.fade { animation:fadeEffect 1.5s; }
+@keyframes fadeEffect { from{opacity:.4} to{opacity:1} }
+
+/* ===== MISSÃO ===== */
+.missao {
+  background:#000;
+  color:var(--pastel);
+  height:300px;
+  display:flex; justify-content:center; align-items:center;
+  font-size:1.5rem;
+  padding:20px;
+  text-align:center;
+}
+
+/* ===== ÁREAS DE ATUAÇÃO ===== */
+.areas {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+  padding:40px 5%;
+}
+.area {
+  background:#fff;
+  border:2px solid #000;
+  border-radius:12px;
+  padding:30px;
+  transition:transform 0.3s, box-shadow 0.3s;
+}
+.area:hover { transform:translateY(-8px); box-shadow:0 8px 16px rgba(0,0,0,0.2); }
+.area h3 { color:#000; margin-bottom:10px; }
+
+/* ===== CONTATOS ===== */
+.contatos {
+  background:#000;
+  color:var(--pastel);
+  padding:40px 20px;
+  text-align:center;
+}
+.contatos p { margin:6px 0; }
+
+/* ===== BOTÃO ÁREA RESTRITA ===== */
+.restrita {
+  text-align:center;
+  margin:40px;
+}
+.restrita a {
+  background:var(--accent);
+  color:#fff;
+  padding:14px 24px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:bold;
+  transition:0.3s;
+}
+.restrita a:hover { background:#a06a32; }
+</style>
 </head>
 <body>
-  <header>
-    <h1>Advocacia Botelho</h1>
-    <nav>
-      <a href="#sobre">Sobre</a>
-      <a href="#areas">Áreas de Atuação</a>
-      <a href="#contato">Contato</a>
-    </nav>
-  </header>
 
-  <section class="hero">
-    <h2>Excelência em Direito Civil, Sucessões e Família</h2>
-    <p>Atendimento humanizado e soluções jurídicas personalizadas para proteger seus direitos.</p>
-  </section>
+<!-- HEADER -->
+<header>
+  <h1>ADVOCACIA BOTELHO</h1>
+</header>
 
-  <section id="sobre" class="section">
-    <h3>Sobre Nós</h3>
-    <p style="text-align:center; max-width:800px; margin:auto;">
-      A <strong>Advocacia Botelho</strong> é especializada em Direito Civil, Sucessões e Direito de Família,
-      com atuação pautada na ética, na transparência e na defesa dos interesses de nossos clientes.
-      Oferecemos atendimento próximo e estratégico para alcançar os melhores resultados.
-    </p>
-  </section>
+<!-- BOTÃO WHATSAPP FIXO -->
+<a class="whatsapp-btn" href="https://api.whatsapp.com/send?phone=5531997771312" target="_blank">💬 WhatsApp</a>
 
-  <section id="areas" class="section">
-    <h3>Áreas de Atuação</h3>
-    <div class="areas">
-      <div class="area">
-        <h4>Direito Civil</h4>
-        <p>Contratos, responsabilidade civil, indenizações e questões patrimoniais com soluções ágeis e eficazes.</p>
-      </div>
-      <div class="area">
-        <h4>Sucessões</h4>
-        <p>Inventários, testamentos e partilhas conduzidos com sensibilidade e segurança jurídica.</p>
-      </div>
-      <div class="area">
-        <h4>Direito de Família</h4>
-        <p>Divórcios, guarda, alimentos e planejamento familiar com foco no cuidado e na proteção das relações.</p>
-      </div>
+<!-- MENU HOVERS -->
+<div class="menu">
+  <div class="menu-item" onclick="document.getElementById('contatos').scrollIntoView({behavior:'smooth'});">CONTATOS</div>
+  <div class="menu-item" onclick="document.getElementById('sobre').scrollIntoView({behavior:'smooth'});">SOBRE</div>
+  <div class="menu-item" onclick="document.getElementById('quem-somos').scrollIntoView({behavior:'smooth'});">QUEM SOMOS</div>
+</div>
+
+<!-- SOBRE -->
+<section id="sobre">
+  <h2>Sobre a Advocacia Botelho</h2>
+  <p>A Advocacia Botelho atua com seriedade, ética e responsabilidade, oferecendo assessoria jurídica de excelência nas áreas Cível, Família e Sucessões. Nosso compromisso é buscar soluções eficientes e justas para nossos clientes.</p>
+</section>
+
+<!-- QUEM SOMOS -->
+<section id="quem-somos">
+  <h2>Quem Somos</h2>
+  <div class="advogados">
+    <div class="advogado">
+      <img src="img/ivan.jpg" alt="Ivan Botelho Santos Filho">
+      <h3>Ivan Botelho Santos Filho</h3>
     </div>
-  </section>
+    <div class="advogado">
+      <img src="img/izabella.jpg" alt="Isabella Botelho Santos">
+      <h3>Izabella Botelho Santos</h3>
+    </div>
+  </div>
+</section>
 
-  <section id="contato" class="section contato">
-    <h3>Contato</h3>
-    <p>📍 Endereço: Avenida Euzébia Maria de Jesus, nº 759, Bairro Dom Pedro I, São José da Lapa-MG</p>
-    <p>📞 Telefones: (31) 99777-1312 | (31) 99756-6734</p>
-    <p>✉️ E-mail: ivanbotelhoadv@hotmail.com</p>
-  </section>
+<!-- SLIDESHOW -->
+<div class="slideshow-container">
+  <div class="mySlides fade"><img src="img/slides/01.jpg" alt=""></div>
+  <div class="mySlides fade"><img src="img/slides/02.jpg" alt=""></div>
+  <div class="mySlides fade"><img src="img/slides/03.jpg" alt=""></div>
+</div>
 
-  <footer>
-    © 2025 Advocacia Botelho – Todos os direitos reservados.
-  </footer>
+<!-- MISSÃO -->
+<div class="missao">
+  Nossa missão é prestar serviços jurídicos de excelência, com ética, transparência e dedicação.
+</div>
+
+<!-- ÁREAS DE ATUAÇÃO -->
+<section>
+  <h2>Áreas de Atuação</h2>
+  <div class="areas">
+    <div class="area">
+      <h3>Direito Cível</h3>
+      <p>Atuação em contratos, responsabilidade civil, direito do consumidor e demandas cíveis em geral.</p>
+    </div>
+    <div class="area">
+      <h3>Direito de Família</h3>
+      <p>Especialistas em divórcio, guarda, pensão alimentícia e dissolução de união estável.</p>
+    </div>
+    <div class="area">
+      <h3>Direito das Sucessões</h3>
+      <p>Inventários, testamentos e partilha de bens com segurança e agilidade.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTATOS -->
+<section id="contatos" class="contatos">
+  <h2>Contato</h2>
+  <p>📍 Endereço: Av. Euzébia Maria de Jesus, nº 759, Bairro Dom Pedro I, São José da Lapa - MG</p>
+  <p>📞 Telefones: (31) 9 9777-1312 | (31) 9 9756-6734</p>
+  <p>📧 Email: ivanbotelhoadv@hotmail.com</p>
+</section>
+
+<!-- BOTÃO ÁREA RESTRITA -->
+<div class="restrita">
+  <a href="login.php">🔑 Área Restrita</a>
+</div>
+
+<script>
+// Slideshow automático
+let slideIndex = 0;
+showSlides();
+function showSlides() {
+  let slides = document.getElementsByClassName("mySlides");
+  for (let i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}
+  slides[slideIndex-1].style.display = "block";
+  setTimeout(showSlides, 10000); // troca a cada 4s
+}
+</script>
+
 </body>
 </html>
